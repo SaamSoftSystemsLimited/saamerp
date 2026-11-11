@@ -1,5 +1,22 @@
 # Release roadmap
 
+```mermaid
+gantt
+    title SaamERP provisional release timeline (20 human hours/week)
+    dateFormat YYYY-MM-DD
+    axisFormat %b %Y
+    section Delivery
+    Controlled demonstration :2026-11-11, 2026-12-05
+    Controlled pilot :2026-12-06, 2027-01-25
+    Commercial core :2027-01-26, 2027-06-30
+    Broad ERP :2027-07-01, 2028-03-31
+    Full agreed competitor scope :2028-04-01, 2028-12-31
+    section Forecast review
+    Six-week re-estimate :milestone, 2026-12-23, 0d
+    section Contingency
+    Conditional remediation :2029-01-01, 2029-11-30
+```
+
 Baseline: 2026-11-11. Development: 20 human hours/week including learning, reviews, defects, support and operations. AI assistance is not a second independently accountable engineer.
 
 | Phase | Start | Target | Exit condition |
