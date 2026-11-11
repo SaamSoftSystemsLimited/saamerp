@@ -34,3 +34,26 @@ passed against the production build. Remote deployment is tracked separately.
 
 GitHub Projects remains optional and blocked; existing issues and the checked-in
 backlog remain the delivery record.
+
+## GitHub runner results
+
+Implementation commit: `4a643d22adb5cb4e7650039521b3ed096674f405`, pushed to private `main`.
+
+- [Backend verification](https://github.com/SaamSoftSystemsLimited/saamerp/actions/runs/43106029850): success on a GitHub-hosted Ubuntu runner.
+- [Frontend verification](https://github.com/SaamSoftSystemsLimited/saamerp/actions/runs/43106029835): success, including Chromium end-to-end checks.
+- [Pages workflow](https://github.com/SaamSoftSystemsLimited/saamerp/actions/runs/43106029792): artifact build/tests/upload succeeded; deployment failed during Configure Pages.
+
+GitHub's deployment annotation reports `Get Pages site failed` / `Not Found` and
+asks for Pages to be enabled using GitHub Actions. The current credential's attempt
+to enable Pages returned HTTP 403. `configure-pages` automatic enablement requires
+a separate authorized token; the built-in workflow token cannot enable the site.
+No live Pages URL is claimed.
+
+Account action: open [repository Pages settings](https://github.com/SaamSoftSystemsLimited/saamerp/settings/pages),
+select **GitHub Actions** as the source, then rerun the Pages workflow. Private
+repository Pages availability depends on the GitHub plan. Keep the repository private.
+This preview is safe to publish as a demo because it bundles synthetic fixtures only;
+Pages does not supply backend hosting or business-data access control.
+
+Full failed-run log download was denied by the environment proxy at GitHub's log
+storage host; the failure above was verified through GitHub's check annotations API.

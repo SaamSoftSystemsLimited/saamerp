@@ -57,3 +57,7 @@ to enable/verify Pages. Workflow-file pushes may additionally need Workflows wri
 - Four module-policy tests passed; TypeScript check and Vite production build passed.
 - Production dependency audit: no vulnerabilities reported at the time of the check.
 - Browser verification evidence is recorded in `docs/IMPLEMENTATION_STATUS.md`.
+
+Backend and frontend verification have now passed on GitHub-hosted runners. The
+Pages build and artifact upload passed; deployment is blocked because the Pages site
+is not enabled. See [verified run results](../../docs/IMPLEMENTATION_STATUS.md#github-runner-results).
