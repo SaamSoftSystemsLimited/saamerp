@@ -1,0 +1,515 @@
+[
+  {
+    "key": "SETUP-001",
+    "title": "Publish private monorepo and delivery project",
+    "module": "platform",
+    "release": "M0 \u2014 Controlled demonstration",
+    "start": "2026-11-11",
+    "due": "2026-11-17",
+    "estimate_hours": 2,
+    "kind": "task",
+    "priority": "P0",
+    "dependencies": [],
+    "acceptance": [
+      "Verify repository and project are private.",
+      "No collaborators added; inspect inherited organization access.",
+      "Publish specifications and link issues, milestones and timeline."
+    ]
+  },
+  {
+    "key": "SPEC-001",
+    "title": "Decompose baseline and competitor scope into acceptance criteria",
+    "module": "specification",
+    "release": "M0 \u2014 Controlled demonstration",
+    "start": "2026-11-11",
+    "due": "2026-11-17",
+    "estimate_hours": 6,
+    "kind": "task",
+    "priority": "P0",
+    "dependencies": [],
+    "acceptance": [
+      "Every Dolibarr public feature has an ID.",
+      "Record competitor editions, sources and gaps without claiming exhaustive parity.",
+      "Identify native/integration decisions and web/Android/iPhone checks."
+    ]
+  },
+  {
+    "key": "ARCH-001",
+    "title": "Define module boundaries and financial transaction model",
+    "module": "architecture",
+    "release": "M0 \u2014 Controlled demonstration",
+    "start": "2026-11-11",
+    "due": "2026-11-17",
+    "estimate_hours": 6,
+    "kind": "task",
+    "priority": "P0",
+    "dependencies": [],
+    "acceptance": [
+      "Document module ownership and interfaces.",
+      "Model invoice/payment/revenue separately.",
+      "Define tenant identity and journal invariants."
+    ]
+  },
+  {
+    "key": "SPIKE-001",
+    "title": "Prove reproducible Java build and module boundary checks",
+    "module": "platform",
+    "release": "M0 \u2014 Controlled demonstration",
+    "start": "2026-11-11",
+    "due": "2026-11-17",
+    "estimate_hours": 4,
+    "kind": "task",
+    "priority": "P0",
+    "dependencies": [
+      "ARCH-001"
+    ],
+    "acceptance": [
+      "Select supported Java/Spring versions with sources.",
+      "Clean build and automated boundary test run.",
+      "Record database-per-customer feasibility questions."
+    ]
+  },
+  {
+    "key": "REVIEW-001",
+    "title": "Review pilot scenarios with accountant HR manager and tax auditor",
+    "module": "specification",
+    "release": "M0 \u2014 Controlled demonstration",
+    "start": "2026-11-11",
+    "due": "2026-11-17",
+    "estimate_hours": 2,
+    "kind": "task",
+    "priority": "P0",
+    "dependencies": [
+      "SPEC-001"
+    ],
+    "acceptance": [
+      "Review synthetic accounting/payroll cases.",
+      "Document current rules needing authoritative validation.",
+      "Agree pilot acceptance owners and weekly review cadence."
+    ]
+  },
+  {
+    "key": "FORECAST-001",
+    "title": "Re-estimate roadmap after six weeks at 20 hours per week",
+    "module": "planning",
+    "release": "M1 \u2014 Controlled pilot",
+    "start": "2026-12-21",
+    "due": "2026-12-23",
+    "estimate_hours": null,
+    "kind": "checkpoint",
+    "priority": "P0",
+    "dependencies": [
+      "SPEC-001"
+    ],
+    "acceptance": [
+      "Compare actual hours and accepted scope with baseline.",
+      "Forecast remaining work and quantify unresolved scope.",
+      "Update dates transparently without silently reducing scope."
+    ]
+  },
+  {
+    "key": "PLAT-001",
+    "title": "Tenant provisioning branches roles audit and module activation",
+    "module": "platform",
+    "release": "M0 \u2014 Controlled demonstration",
+    "start": "2026-11-11",
+    "due": "2026-12-05",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "ARCH-001"
+    ],
+    "acceptance": [
+      "Provision tenant and branches; isolate API/files/jobs.",
+      "Enforce roles, MFA/session controls and activation dependencies."
+    ]
+  },
+  {
+    "key": "CRM-001",
+    "title": "CRM quotations orders contracts and subscriptions",
+    "module": "sales",
+    "release": "M1 \u2014 Controlled pilot",
+    "start": "2026-12-06",
+    "due": "2027-01-25",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "PLAT-001"
+    ],
+    "acceptance": [
+      "Complete lead-to-order and contract renewal workflows.",
+      "Version terms and prevent duplicate scheduled billing."
+    ]
+  },
+  {
+    "key": "ACC-001",
+    "title": "Ledger invoicing payments bank imports and financial statements",
+    "module": "finance",
+    "release": "M1 \u2014 Controlled pilot",
+    "start": "2026-12-06",
+    "due": "2027-01-25",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "PLAT-001"
+    ],
+    "acceptance": [
+      "Balanced idempotent postings; period close/reversal controls.",
+      "Reconcile invoices payments bank imports and statements with accountant."
+    ]
+  },
+  {
+    "key": "HR-001",
+    "title": "Employee records attendance leave and delegated approvals",
+    "module": "people",
+    "release": "M1 \u2014 Controlled pilot",
+    "start": "2026-12-06",
+    "due": "2027-01-25",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "PLAT-001"
+    ],
+    "acceptance": [
+      "Portal clock events timesheets and device imports.",
+      "Overtime only from authorized approvals; effective-dated delegation."
+    ]
+  },
+  {
+    "key": "PAY-001",
+    "title": "Nigeria payroll contractor payments and private payslips",
+    "module": "people",
+    "release": "M1 \u2014 Controlled pilot",
+    "start": "2026-12-06",
+    "due": "2027-01-25",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "HR-001",
+      "ACC-001"
+    ],
+    "acceptance": [
+      "Validate salary allowances commissions overtime pension PAYE loans.",
+      "Separate contractor treatment; HR/accountant/tax sign-off.",
+      "Own-record payslip access from first run and at least 12 months when accumulated."
+    ]
+  },
+  {
+    "key": "PILOT-001",
+    "title": "Demonstrate selected complete workflows on synthetic data",
+    "module": "release",
+    "release": "M0 \u2014 Controlled demonstration",
+    "start": "2026-11-11",
+    "due": "2026-12-05",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "PLAT-001",
+      "ACC-001"
+    ],
+    "acceptance": [
+      "Selected sale-to-ledger and employee/payroll flows demonstrated.",
+      "Document missing behavior; do not claim full suite readiness."
+    ]
+  },
+  {
+    "key": "INV-001",
+    "title": "Purchasing inventory shipment returns and valuation",
+    "module": "inventory",
+    "release": "M2 \u2014 Commercial core",
+    "start": "2027-01-26",
+    "due": "2027-06-30",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "ACC-001",
+      "CRM-001"
+    ],
+    "acceptance": [
+      "Reconcile stock movements reservations transfers and counts.",
+      "Trace serial/batch items and reconcile valuation to ledger."
+    ]
+  },
+  {
+    "key": "FIN-001",
+    "title": "Multi-currency assets budgets dimensions and job costing",
+    "module": "finance",
+    "release": "M2 \u2014 Commercial core",
+    "start": "2027-01-26",
+    "due": "2027-06-30",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "ACC-001"
+    ],
+    "acceptance": [
+      "Validate realized/unrealized FX and depreciation.",
+      "Budget/actual branch cost-centre project and phase/cost-code reports."
+    ]
+  },
+  {
+    "key": "PRJ-001",
+    "title": "Projects interventions timesheets expenses and delivery billing",
+    "module": "operations",
+    "release": "M2 \u2014 Commercial core",
+    "start": "2027-01-26",
+    "due": "2027-06-30",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "CRM-001",
+      "ACC-001",
+      "HR-001"
+    ],
+    "acceptance": [
+      "Trace project work expenses costs milestones and invoices.",
+      "Support generic services and optional training workflows."
+    ]
+  },
+  {
+    "key": "INT-001",
+    "title": "Customer-owned and managed email WhatsApp SMS connectors",
+    "module": "integration",
+    "release": "M2 \u2014 Commercial core",
+    "start": "2027-01-26",
+    "due": "2027-06-30",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "PLAT-001"
+    ],
+    "acceptance": [
+      "Store scoped credentials securely; support tenant-specific accounts.",
+      "Retry safely and expose pending/failed delivery and usage."
+    ]
+  },
+  {
+    "key": "MOB-001",
+    "title": "Android and iPhone coverage for all ERP functions",
+    "module": "mobile",
+    "release": "M4 \u2014 Full agreed competitor scope",
+    "start": "2026-11-18",
+    "due": "2028-12-31",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "PLAT-001"
+    ],
+    "acceptance": [
+      "Every functional requirement has mobile evidence.",
+      "SaaS only; secure sessions files administrative flows and store distribution.",
+      "Deliver alongside modules; final date is parity gate, not mobile start date."
+    ]
+  },
+  {
+    "key": "HRX-001",
+    "title": "Recruitment onboarding appraisals learning benefits offboarding",
+    "module": "people",
+    "release": "M2 \u2014 Commercial core",
+    "start": "2027-01-26",
+    "due": "2027-06-30",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "HR-001"
+    ],
+    "acceptance": [
+      "End-to-end employee lifecycle and restricted self-service.",
+      "Version entitlements and validate permissions."
+    ]
+  },
+  {
+    "key": "SUP-001",
+    "title": "Helpdesk knowledge memberships agenda and productivity",
+    "module": "operations",
+    "release": "M3 \u2014 Broad ERP",
+    "start": "2027-07-01",
+    "due": "2028-03-31",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "CRM-001"
+    ],
+    "acceptance": [
+      "Ticket assignment/escalation and contract entitlements.",
+      "Membership renewals calendar reminders and knowledge visibility."
+    ]
+  },
+  {
+    "key": "WEB-001",
+    "title": "Website CMS POS marketing surveys and appointments",
+    "module": "channels",
+    "release": "M3 \u2014 Broad ERP",
+    "start": "2027-07-01",
+    "due": "2028-03-31",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "INV-001",
+      "CRM-001",
+      "INT-001"
+    ],
+    "acceptance": [
+      "Publish content and run POS session sale/return/reconciliation.",
+      "Consent-aware campaigns surveys bookings and reminders.",
+      "Define local-server outage behavior without assuming device sync."
+    ]
+  },
+  {
+    "key": "MFG-001",
+    "title": "Manufacturing quality maintenance rental and barcode workflows",
+    "module": "operations",
+    "release": "M3 \u2014 Broad ERP",
+    "start": "2027-07-01",
+    "due": "2028-03-31",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "INV-001",
+      "FIN-001"
+    ],
+    "acceptance": [
+      "BOM consumption output costing and traceability.",
+      "Inspection/corrective actions equipment maintenance and rental returns.",
+      "Scan supported product/location operations."
+    ]
+  },
+  {
+    "key": "EXT-001",
+    "title": "Custom records forms workflows reports automation and signatures",
+    "module": "platform",
+    "release": "M4 \u2014 Full agreed competitor scope",
+    "start": "2028-04-01",
+    "due": "2028-12-31",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "PLAT-001",
+      "INT-001"
+    ],
+    "acceptance": [
+      "Version and permission custom definitions safely.",
+      "No arbitrary tenant code in shared SaaS.",
+      "Trace approvals signatures events and integration operations."
+    ]
+  },
+  {
+    "key": "REV-001",
+    "title": "Revenue recognition close management and advanced reporting",
+    "module": "finance",
+    "release": "M4 \u2014 Full agreed competitor scope",
+    "start": "2028-04-01",
+    "due": "2028-12-31",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "FIN-001",
+      "CRM-001"
+    ],
+    "acceptance": [
+      "Deferred schedules reconcile to earned revenue and ledger.",
+      "Close tasks exceptions audit evidence and controlled reopening.",
+      "Document multi-entity benchmark conflict with one-entity product model."
+    ]
+  },
+  {
+    "key": "MIG-001",
+    "title": "Validated Excel Dolibarr Zoho Odoo Sage and Peachtree migration",
+    "module": "migration",
+    "release": "M4 \u2014 Full agreed competitor scope",
+    "start": "2026-11-18",
+    "due": "2028-12-31",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "ACC-001",
+      "INV-001"
+    ],
+    "acceptance": [
+      "Excel first; adapter versions and supported entities explicit.",
+      "Preview map deduplicate reconcile and trial cutover.",
+      "Distinguish balances/open items from full historical migration."
+    ]
+  },
+  {
+    "key": "OPS-001",
+    "title": "SaaS dedicated and on-premises operations recovery and upgrades",
+    "module": "operations",
+    "release": "M3 \u2014 Broad ERP",
+    "start": "2026-11-18",
+    "due": "2028-03-31",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "PLAT-001"
+    ],
+    "acceptance": [
+      "Separate staging; repeatable deployment and upgrade/rollback.",
+      "Restore rehearsal and external encrypted backups.",
+      "Validate office intranet workflow and external queues."
+    ]
+  },
+  {
+    "key": "LOAD-001",
+    "title": "Validate 50 tenants and 250 concurrent users",
+    "module": "quality",
+    "release": "M2 \u2014 Commercial core",
+    "start": "2027-04-01",
+    "due": "2027-06-30",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "PLAT-001",
+      "ACC-001"
+    ],
+    "acceptance": [
+      "Representative active workload and measured p95 latency.",
+      "Capacity, isolation, financial integrity and resource usage recorded.",
+      "Recovery objectives verified or revised with evidence.",
+      "First SaaS deployment/recovery slice of OPS-001 available before testing; full OPS epic may finish later."
+    ]
+  },
+  {
+    "key": "PARITY-001",
+    "title": "Close competitor register and full-scope acceptance",
+    "module": "release",
+    "release": "M4 \u2014 Full agreed competitor scope",
+    "start": "2028-04-01",
+    "due": "2028-12-31",
+    "estimate_hours": null,
+    "kind": "epic",
+    "priority": "P1",
+    "dependencies": [
+      "SPEC-001",
+      "MOB-001",
+      "EXT-001",
+      "REV-001",
+      "MIG-001"
+    ],
+    "acceptance": [
+      "Enumerate and resolve every approved competitor gap.",
+      "Track standalone Zoho tools/vendor AI/native vs integration decisions.",
+      "Specialist acceptance and web/Android/iPhone coverage complete."
+    ]
+  }
+]

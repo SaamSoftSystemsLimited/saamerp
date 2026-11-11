@@ -1,0 +1,27 @@
+[
+  {
+    "title": "M0 \u2014 Controlled demonstration",
+    "start": "2026-11-11",
+    "due": "2026-12-05"
+  },
+  {
+    "title": "M1 \u2014 Controlled pilot",
+    "start": "2026-12-06",
+    "due": "2027-01-25"
+  },
+  {
+    "title": "M2 \u2014 Commercial core",
+    "start": "2027-01-26",
+    "due": "2027-06-30"
+  },
+  {
+    "title": "M3 \u2014 Broad ERP",
+    "start": "2027-07-01",
+    "due": "2028-03-31"
+  },
+  {
+    "title": "M4 \u2014 Full agreed competitor scope",
+    "start": "2028-04-01",
+    "due": "2028-12-31"
+  }
+]

@@ -1,0 +1,25 @@
+name: Work item
+description: Implement a traceable SaamERP requirement
+title: "[MODULE] "
+body:
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Business outcome and requirement IDs
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria and client coverage
+      description: Include permission, exception, financial and web/Android/iPhone checks where relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and estimate
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Validation evidence

@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+node_modules/
+target/
+build/
+.dart_tool/
+.idea/
+.DS_Store
+coverage/
+*.dump
+*.sql.gz
+planning/github-state.json

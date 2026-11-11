@@ -1,0 +1,28 @@
+ID,Title,Module,Release,Start date,Target date,Estimate hours,Type,Priority,Dependencies
+SETUP-001,Publish private monorepo and delivery project,platform,M0 — Controlled demonstration,2026-11-11,2026-11-17,2,task,P0,
+SPEC-001,Decompose baseline and competitor scope into acceptance criteria,specification,M0 — Controlled demonstration,2026-11-11,2026-11-17,6,task,P0,
+ARCH-001,Define module boundaries and financial transaction model,architecture,M0 — Controlled demonstration,2026-11-11,2026-11-17,6,task,P0,
+SPIKE-001,Prove reproducible Java build and module boundary checks,platform,M0 — Controlled demonstration,2026-11-11,2026-11-17,4,task,P0,ARCH-001
+REVIEW-001,Review pilot scenarios with accountant HR manager and tax auditor,specification,M0 — Controlled demonstration,2026-11-11,2026-11-17,2,task,P0,SPEC-001
+FORECAST-001,Re-estimate roadmap after six weeks at 20 hours per week,planning,M1 — Controlled pilot,2026-12-21,2026-12-23,,checkpoint,P0,SPEC-001
+PLAT-001,Tenant provisioning branches roles audit and module activation,platform,M0 — Controlled demonstration,2026-11-11,2026-12-05,,epic,P1,ARCH-001
+CRM-001,CRM quotations orders contracts and subscriptions,sales,M1 — Controlled pilot,2026-12-06,2027-01-25,,epic,P1,PLAT-001
+ACC-001,Ledger invoicing payments bank imports and financial statements,finance,M1 — Controlled pilot,2026-12-06,2027-01-25,,epic,P1,PLAT-001
+HR-001,Employee records attendance leave and delegated approvals,people,M1 — Controlled pilot,2026-12-06,2027-01-25,,epic,P1,PLAT-001
+PAY-001,Nigeria payroll contractor payments and private payslips,people,M1 — Controlled pilot,2026-12-06,2027-01-25,,epic,P1,"HR-001, ACC-001"
+PILOT-001,Demonstrate selected complete workflows on synthetic data,release,M0 — Controlled demonstration,2026-11-11,2026-12-05,,epic,P1,"PLAT-001, ACC-001"
+INV-001,Purchasing inventory shipment returns and valuation,inventory,M2 — Commercial core,2027-01-26,2027-06-30,,epic,P1,"ACC-001, CRM-001"
+FIN-001,Multi-currency assets budgets dimensions and job costing,finance,M2 — Commercial core,2027-01-26,2027-06-30,,epic,P1,ACC-001
+PRJ-001,Projects interventions timesheets expenses and delivery billing,operations,M2 — Commercial core,2027-01-26,2027-06-30,,epic,P1,"CRM-001, ACC-001, HR-001"
+INT-001,Customer-owned and managed email WhatsApp SMS connectors,integration,M2 — Commercial core,2027-01-26,2027-06-30,,epic,P1,PLAT-001
+MOB-001,Android and iPhone coverage for all ERP functions,mobile,M4 — Full agreed competitor scope,2026-11-18,2028-12-31,,epic,P1,PLAT-001
+HRX-001,Recruitment onboarding appraisals learning benefits offboarding,people,M2 — Commercial core,2027-01-26,2027-06-30,,epic,P1,HR-001
+SUP-001,Helpdesk knowledge memberships agenda and productivity,operations,M3 — Broad ERP,2027-07-01,2028-03-31,,epic,P1,CRM-001
+WEB-001,Website CMS POS marketing surveys and appointments,channels,M3 — Broad ERP,2027-07-01,2028-03-31,,epic,P1,"INV-001, CRM-001, INT-001"
+MFG-001,Manufacturing quality maintenance rental and barcode workflows,operations,M3 — Broad ERP,2027-07-01,2028-03-31,,epic,P1,"INV-001, FIN-001"
+EXT-001,Custom records forms workflows reports automation and signatures,platform,M4 — Full agreed competitor scope,2028-04-01,2028-12-31,,epic,P1,"PLAT-001, INT-001"
+REV-001,Revenue recognition close management and advanced reporting,finance,M4 — Full agreed competitor scope,2028-04-01,2028-12-31,,epic,P1,"FIN-001, CRM-001"
+MIG-001,Validated Excel Dolibarr Zoho Odoo Sage and Peachtree migration,migration,M4 — Full agreed competitor scope,2026-11-18,2028-12-31,,epic,P1,"ACC-001, INV-001"
+OPS-001,SaaS dedicated and on-premises operations recovery and upgrades,operations,M3 — Broad ERP,2026-11-18,2028-03-31,,epic,P1,PLAT-001
+LOAD-001,Validate 50 tenants and 250 concurrent users,quality,M2 — Commercial core,2027-04-01,2027-06-30,,epic,P1,"PLAT-001, ACC-001"
+PARITY-001,Close competitor register and full-scope acceptance,release,M4 — Full agreed competitor scope,2028-04-01,2028-12-31,,epic,P1,"SPEC-001, MOB-001, EXT-001, REV-001, MIG-001"
