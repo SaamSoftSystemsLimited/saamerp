@@ -2,7 +2,7 @@
 
 General-purpose ERP/CRM by SaamSoft Systems. Nigeria first, followed by Ghana, Kenya and South Africa.
 
-Planning baseline: 11 November 2026. This repository currently contains specifications and delivery planning; it is not a working ERP.
+Planning baseline: 11 November 2026. This repository contains specifications, delivery planning and an initial Java backend foundation; it is not a working ERP.
 
 ## Product
 
@@ -24,9 +24,9 @@ Planning baseline: 11 November 2026. This repository currently contains specific
 
 ## Monorepo layout
 
-`apps/backend` — proposed Java/Spring Boot modular backend.
+`apps/backend` — Java/Spring Boot modular backend foundation; see [build instructions](apps/backend/README.md).
 
-`apps/web` — proposed React/TypeScript web client.
+`apps/web` — React/TypeScript demonstration workspace with module activation; see [frontend instructions](apps/web/README.md).
 
 `apps/mobile` — proposed Flutter Android/iPhone client.
 

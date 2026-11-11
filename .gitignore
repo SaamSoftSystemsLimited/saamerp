@@ -15,3 +15,8 @@ coverage/
 *.dump
 *.sql.gz
 planning/github-state.json
+
+dist/
+*.tsbuildinfo
+playwright-report/
+test-results/
