@@ -72,6 +72,8 @@ places and a bounded safe total. Dates use UTC calendar dates.
    records and issued quotation snapshot after restart.
 5. The resulting `apps/web/public/demo/crm.json` is bundled into the static frontend.
 6. TypeScript, unit and Chromium end-to-end tests run before Pages deployment.
+7. A post-deployment HTTP smoke check requires the React entry point and the
+   synthetic PostgreSQL-generated CRM dataset at the published URL.
 
 The Pages site fetches a relative `demo/crm.json` asset. Browser edits stay in
 localStorage; they are not written to PostgreSQL, shared with other visitors, or
