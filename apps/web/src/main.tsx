@@ -24,6 +24,7 @@ import {
   type ModuleId,
 } from "./modules";
 import "./style.css";
+import { CrmWorkspace } from "./CrmWorkspace";
 
 function App() {
   const [enabled, setEnabled] = useState<ModuleId[]>(() => {
@@ -35,7 +36,7 @@ function App() {
   });
   const [branch, setBranch] = useState("All branches");
   const [query, setQuery] = useState("");
-  const [view, setView] = useState<"overview" | "modules">("overview");
+  const [view, setView] = useState<"overview" | "modules" | "crm">("overview");
   const [notice, setNotice] = useState("");
   const [mobileMenu, setMobileMenu] = useState(false);
   function toggle(id: ModuleId) {
@@ -101,13 +102,23 @@ function App() {
             <Layers3 size={18} />
             Modules<span className="nav-count">{catalog.length}</span>
           </button>
+          <button
+            className={view === "crm" ? "selected" : ""}
+            onClick={() => {
+              setView("crm");
+              setMobileMenu(false);
+            }}
+          >
+            <Users size={18} />
+            Customers & quotations
+          </button>
         </nav>
         <div className="sidebar-note">
           <ShieldCheck size={21} />
           <strong>Your business. Connected.</strong>
           <p>One workspace for your teams, operations and finances.</p>
           <span>
-            Foundation preview <span className="tiny-dot" />
+            CRM demonstration <span className="tiny-dot" />
           </span>
         </div>
         <div className="profile">
@@ -130,7 +141,13 @@ function App() {
             </button>
             <span>Workspace</span>
             <span className="slash">/</span>
-            <strong>{view === "overview" ? "Overview" : "Modules"}</strong>
+            <strong>
+              {view === "overview"
+                ? "Overview"
+                : view === "crm"
+                  ? "CRM & sales"
+                  : "Modules"}
+            </strong>
           </div>
           <div className="header-right">
             <span className="demo-tag">DEMO</span>
@@ -139,7 +156,7 @@ function App() {
               aria-label="About this preview"
               onClick={() =>
                 setNotice(
-                  "This is a static preview with synthetic data. Module settings stay in this browser. Business workflows and backend authentication are not connected yet.",
+                  "This demo includes customers, contacts and quotations. Synthetic seed records come from PostgreSQL on GitHub runners; your edits stay in this browser. No live backend connection is used by Pages.",
                 )
               }
             >
@@ -155,12 +172,16 @@ function App() {
               <h1>
                 {view === "overview"
                   ? "A good day to move forward."
-                  : "Make SaamERP your own."}
+                  : view === "crm"
+                    ? "Your customer workspace."
+                    : "Make SaamERP your own."}
               </h1>
               <p>
                 {view === "overview"
                   ? "A connected foundation for the way your business works."
-                  : "Choose the modules your business needs. Grow at your own pace."}
+                  : view === "crm"
+                    ? "From the first conversation to an accepted quotation."
+                    : "Choose the modules your business needs. Grow at your own pace."}
               </p>
             </div>
             <label className="branch-picker">
@@ -270,105 +291,132 @@ function App() {
               </section>
             </>
           )}
-          <section className="modules-section">
-            <div className="section-heading">
-              <div>
-                <h2>
-                  {view === "overview"
-                    ? "Your business toolkit"
-                    : "Workspace modules"}
-                  <span className="count">{catalog.length}</span>
-                </h2>
-                <p>Activate what you need. Your history stays with you.</p>
-              </div>
-              <label className="search">
-                <Search size={17} />
-                <input
-                  aria-label="Search modules"
-                  placeholder="Search modules..."
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                />
-              </label>
-            </div>
-            <div className="module-grid">
-              {visible.map((module) => {
-                const active = enabled.includes(module.id);
-                const required = "required" in module && module.required;
-                const Icon =
-                  module.category === "Finance"
-                    ? Wallet
-                    : module.category === "People" || module.id === "crm"
-                      ? Users
-                      : module.id === "organization"
-                        ? Building2
-                        : Layers3;
-                return (
-                  <article className="module-card" key={module.id}>
-                    <div className="module-top">
-                      <div
-                        className={`module-icon ${module.category === "Finance" ? "purple" : module.category === "People" ? "orange" : ""}`}
-                      >
-                        <Icon size={22} />
-                      </div>
-                      <span className={`status ${active ? "active" : ""}`}>
-                        {active ? (
-                          <>
-                            <span className="tiny-dot" />
-                            Active
-                          </>
-                        ) : (
-                          "Not active"
-                        )}
-                      </span>
-                    </div>
-                    <div className="module-category">{module.category}</div>
-                    <h3>{module.title}</h3>
-                    <p>{module.description}</p>
-                    <div className="dependency">
-                      {required
-                        ? "Included in every workspace"
-                        : `Requires: ${module.dependencies.map(title).join(", ")}`}
-                    </div>
-                    <div className="module-footer">
-                      <span>Workflow coming next</span>
-                      <button
-                        disabled={required}
-                        aria-label={`${active ? "Disable" : "Enable"} ${module.title}`}
-                        onClick={() => toggle(module.id)}
-                      >
-                        {required ? (
-                          <>
-                            <Check size={14} />
-                            Required
-                          </>
-                        ) : active ? (
-                          "Disable"
-                        ) : (
-                          <>
-                            Enable
-                            <ArrowUpRight size={14} />
-                          </>
-                        )}
-                      </button>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-            {!visible.length && (
+          {view === "crm" &&
+            (enabled.includes("crm") ? (
+              <CrmWorkspace branch={branch} />
+            ) : (
               <div className="empty">
-                No modules match “{query}”.{" "}
-                <button onClick={() => setQuery("")}>Clear search</button>
+                <h2>CRM & sales is disabled</h2>
+                <p>
+                  Your saved records are retained. Enable CRM & sales in Modules
+                  to continue.
+                </p>
+                <button onClick={() => setView("modules")}>
+                  Manage modules
+                </button>
               </div>
-            )}
-          </section>
+            ))}
+          {view !== "crm" && (
+            <section className="modules-section">
+              <div className="section-heading">
+                <div>
+                  <h2>
+                    {view === "overview"
+                      ? "Your business toolkit"
+                      : "Workspace modules"}
+                    <span className="count">{catalog.length}</span>
+                  </h2>
+                  <p>Activate what you need. Your history stays with you.</p>
+                </div>
+                <label className="search">
+                  <Search size={17} />
+                  <input
+                    aria-label="Search modules"
+                    placeholder="Search modules..."
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                  />
+                </label>
+              </div>
+              <div className="module-grid">
+                {visible.map((module) => {
+                  const active = enabled.includes(module.id);
+                  const required = "required" in module && module.required;
+                  const Icon =
+                    module.category === "Finance"
+                      ? Wallet
+                      : module.category === "People" || module.id === "crm"
+                        ? Users
+                        : module.id === "organization"
+                          ? Building2
+                          : Layers3;
+                  return (
+                    <article className="module-card" key={module.id}>
+                      <div className="module-top">
+                        <div
+                          className={`module-icon ${module.category === "Finance" ? "purple" : module.category === "People" ? "orange" : ""}`}
+                        >
+                          <Icon size={22} />
+                        </div>
+                        <span className={`status ${active ? "active" : ""}`}>
+                          {active ? (
+                            <>
+                              <span className="tiny-dot" />
+                              Active
+                            </>
+                          ) : (
+                            "Not active"
+                          )}
+                        </span>
+                      </div>
+                      <div className="module-category">{module.category}</div>
+                      <h3>{module.title}</h3>
+                      <p>{module.description}</p>
+                      <div className="dependency">
+                        {required
+                          ? "Included in every workspace"
+                          : `Requires: ${module.dependencies.map(title).join(", ")}`}
+                      </div>
+                      <div className="module-footer">
+                        {module.id === "crm" && active ? (
+                          <button onClick={() => setView("crm")}>
+                            Open CRM <ArrowUpRight size={14} />
+                          </button>
+                        ) : (
+                          <span>
+                            {module.id === "crm"
+                              ? "Demo workflow available"
+                              : "Workflow coming next"}
+                          </span>
+                        )}
+                        <button
+                          disabled={required}
+                          aria-label={`${active ? "Disable" : "Enable"} ${module.title}`}
+                          onClick={() => toggle(module.id)}
+                        >
+                          {required ? (
+                            <>
+                              <Check size={14} />
+                              Required
+                            </>
+                          ) : active ? (
+                            "Disable"
+                          ) : (
+                            <>
+                              Enable
+                              <ArrowUpRight size={14} />
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+              {!visible.length && (
+                <div className="empty">
+                  No modules match “{query}”.{" "}
+                  <button onClick={() => setQuery("")}>Clear search</button>
+                </div>
+              )}
+            </section>
+          )}
           <div className="bottom-note">
             <ShieldCheck size={18} />
             <p>
               <strong>A safe place to explore.</strong> This preview uses
               synthetic data. Module preferences are saved only in this browser;
-              no customer records are stored.
+              no real customer records should be entered.
             </p>
           </div>
           <footer>

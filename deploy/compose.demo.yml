@@ -1,0 +1,19 @@
+# Local synthetic data only. The Java API runs separately on 127.0.0.1.
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: saamerp_demo
+      POSTGRES_USER: saamerp_demo
+      POSTGRES_PASSWORD: ${CRM_DATABASE_PASSWORD:?Set a local demo database password}
+    ports:
+      - '127.0.0.1:55432:5432'
+    volumes:
+      - crm-demo-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U saamerp_demo -d saamerp_demo']
+      interval: 5s
+      timeout: 5s
+      retries: 12
+volumes:
+  crm-demo-data:

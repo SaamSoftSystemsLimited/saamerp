@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "mode": "synthetic",
+  "customers": [
+    {
+      "id": "de0a41a8-30ef-441f-aa2b-431e8cb039ff",
+      "branch": "Abuja \u00b7 Demo branch",
+      "name": "Demo \u00b7 Cedar Technology Ltd",
+      "email": "team@cedar.example.test"
+    },
+    {
+      "id": "3d91890e-5a28-49fd-9a77-d03f14318aff",
+      "branch": "Lagos \u00b7 Head office",
+      "name": "Demo \u00b7 Lagoon Learning Ltd",
+      "email": "hello@lagoon.example.test"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "49c07c3c-c4c6-4d5e-bff6-774defa2681c",
+      "customerId": "3d91890e-5a28-49fd-9a77-d03f14318aff",
+      "name": "Demo \u00b7 Amara Okafor",
+      "email": "amara@example.test"
+    },
+    {
+      "id": "0c0ba36b-0463-473f-94e2-7501f0c87031",
+      "customerId": "de0a41a8-30ef-441f-aa2b-431e8cb039ff",
+      "name": "Demo \u00b7 Musa Bello",
+      "email": "musa@example.test"
+    }
+  ],
+  "quotes": [
+    {
+      "id": "57f7865e-659f-4e86-96d5-f65acfe118ad",
+      "number": "Q-57F7865E-659F-4E86",
+      "customerId": "3d91890e-5a28-49fd-9a77-d03f14318aff",
+      "contactId": "49c07c3c-c4c6-4d5e-bff6-774defa2681c",
+      "branch": "Lagos \u00b7 Head office",
+      "customerName": "Demo \u00b7 Lagoon Learning Ltd",
+      "contactName": "Demo \u00b7 Amara Okafor",
+      "validUntil": "2099-12-31",
+      "status": "SENT",
+      "currency": "NGN",
+      "lines": [
+        {
+          "description": "Corporate training workshop (synthetic)",
+          "quantity": 2,
+          "unitPriceMinor": 12500000
+        },
+        {
+          "description": "Course materials (synthetic)",
+          "quantity": 10,
+          "unitPriceMinor": 150000
+        }
+      ],
+      "totalMinor": 26500000
+    },
+    {
+      "id": "d822e2b2-3920-4baa-9e1f-fa665e522323",
+      "number": "Q-D822E2B2-3920-4BAA",
+      "customerId": "de0a41a8-30ef-441f-aa2b-431e8cb039ff",
+      "contactId": null,
+      "branch": "Abuja \u00b7 Demo branch",
+      "customerName": "Demo \u00b7 Cedar Technology Ltd",
+      "contactName": "",
+      "validUntil": "2099-12-31",
+      "status": "DRAFT",
+      "currency": "NGN",
+      "lines": [
+        {
+          "description": "IT consulting session (synthetic)",
+          "quantity": 3,
+          "unitPriceMinor": 3500000
+        }
+      ],
+      "totalMinor": 10500000
+    }
+  ]
+}

@@ -1,14 +1,42 @@
 name: Backend verification
 on:
   push:
-    paths: ['apps/backend/**', '.github/workflows/backend.yml']
+    paths:
+      [
+        "apps/backend/**",
+        "scripts/verify_crm_demo.py",
+        ".github/workflows/backend.yml",
+      ]
   pull_request:
-    paths: ['apps/backend/**', '.github/workflows/backend.yml']
+    paths:
+      [
+        "apps/backend/**",
+        "scripts/verify_crm_demo.py",
+        ".github/workflows/backend.yml",
+      ]
 permissions:
   contents: read
 jobs:
   verify:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: saamerp_demo
+          POSTGRES_USER: saamerp_demo
+          POSTGRES_PASSWORD: runner-demo-only-password
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U saamerp_demo -d saamerp_demo"
+          --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      CRM_TEST_DATABASE_URL: jdbc:postgresql://localhost:5432/saamerp_demo
+      CRM_TEST_DATABASE_USER: saamerp_demo
+      CRM_TEST_DATABASE_PASSWORD: runner-demo-only-password
+      CRM_DATABASE_URL: jdbc:postgresql://localhost:5432/saamerp_demo
+      CRM_DATABASE_USER: saamerp_demo
+      CRM_DATABASE_PASSWORD: runner-demo-only-password
     defaults:
       run:
         working-directory: apps/backend
@@ -17,7 +45,10 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '21'
+          java-version: "21"
           cache: maven
           cache-dependency-path: apps/backend/pom.xml
       - run: ./mvnw --batch-mode --no-transfer-progress clean verify
+      - name: Verify API seed and persistence across restart
+        working-directory: .
+        run: python scripts/verify_crm_demo.py --jar apps/backend/target/saamerp-backend-0.1.0-SNAPSHOT.jar --output /tmp/crm-demo.json

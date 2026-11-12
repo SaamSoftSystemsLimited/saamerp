@@ -10,9 +10,9 @@ cd apps/backend
 ```
 
 `GET http://localhost:8080/actuator/health` returns the process health without
-internal details. All other requests are denied. This is a foundation, not an
+internal details. All other requests are denied in the default profile. This is a foundation, not an
 ERP API or an implemented authentication system. Do not deploy it as a product.
-There is no persistence, tenant provisioning or PostgreSQL integration yet.
+The optional `postgres` profile now provides persistent demo customers, contacts and quotations. Tenant provisioning and production identity controls remain unimplemented. See [CRM setup](../../docs/CRM_DEMO.md).
 
 The tests start an HTTP server and verify health exposure and request denial;
 Spring Modulith tests verify module membership and declared dependency boundaries.
