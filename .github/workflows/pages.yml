@@ -76,6 +76,15 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Select application workflow as Pages source
+        id: pages-source
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method PUT "repos/${GITHUB_REPOSITORY}/pages" -f build_type=workflow > /dev/null
+      - name: Report source configuration limitation
+        if: steps.pages-source.outcome == 'failure'
+        run: echo "::warning::Could not switch Pages source. Select GitHub Actions in repository Settings / Pages to prevent branch documentation builds."
       - uses: actions/configure-pages@v5
       - name: Deploy
         id: deployment
